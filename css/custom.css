@@ -1,0 +1,108 @@
+/*geral*/
+
+body, html {
+    font-family: 'Kanit', sans-serif;
+}
+
+.container-fluid {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/*header, nav*/
+
+#header {
+    width: 100%;
+    background-color: transparent;
+    transition: background ease-out 0.2s;
+}
+
+#header .navbar-collapse {
+    width: auto;
+}
+
+#header .navbar-expand-lg .navbar-nav .nav-link {
+    padding: 1rem 1rem;
+    font-size: 18px;
+}
+
+#header .nav-link {
+    padding-left: 0;
+    padding-right: 0;
+    color: black;
+    transition: all 0.5s;
+    cursor: pointer;
+    border-bottom: solid 2px transparent;
+}
+
+#header .nav-link:hover {
+    border-bottom: solid 2px var(--primary);
+    color: var(--primary);
+    transform: scale(1.05);
+}
+
+#header .navbar-brand {
+    font-weight: 500;
+    color: black;
+}
+
+#header .navbar-brand:hover {
+    color: var(--primary);
+}
+
+#header.active {
+    position: fixed;
+    background: #fff;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, .4);
+    z-index: 9999;
+}
+
+#slider h1 {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+#slider h4 {
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+#como-funciona .passo-a-passo {
+    background-color: #7df38d18;
+    border-radius: 5px;
+    display: flex;
+    padding: 30px;
+}
+
+#como-funciona .passo-a-passo .img-icone {
+    max-width: 35px;
+}
+
+#como-funciona .passo-a-passo .pass-text {
+    color: black;
+}
+
+#como-funciona .passo-a-passo .pass-text span {
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: black;
+}
+
+#como-funciona a.passo {
+    display: block;
+    background: #7df38d34;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    color: black;
+    text-decoration: none;
+    transition: all ease-out 0.2s;
+}
+
+#como-funciona a.passo:hover {
+    cursor: pointer;
+    background: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .12);
+    transform: scale(1.05);
+}

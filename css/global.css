@@ -1,0 +1,39 @@
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+}
+
+.title {
+    text-transform: uppercase;
+}
+a{
+    color:var(--primary);
+}
+a:hover{
+    color: #3ac74d;
+}
+
+.button {
+    text-transform: uppercase;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+}
+
+.button-primary-outline {
+    border-color: var(--primary);
+    text-transform: solid green;
+}
+
+.button-primary-outline:hover {
+    transition: .8s;
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.block {
+    margin-bottom: 120px;
+}
+
+#how-text {
+    font-size: 20px;
+    text-align: justify;
+}
