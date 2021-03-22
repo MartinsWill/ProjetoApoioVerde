@@ -13,5 +13,24 @@
     #header .navbar-collapse {
         width: 100%;
     }
+    #como-funciona .box-style{
+        width: 150px;
+    }
 }
 
+@media (max-width: 767.98px) {
+    #contato ul li{
+        padding-top: 30px;
+        justify-content: center;
+    }
+}
+@media (max-width:1399.98px){
+    #como-funciona .box-style{
+        width: 128px;
+    }
+}
+@media (max-width:1199.98px){
+    #como-funciona .box-style{
+        width: 150px;
+    }
+}
