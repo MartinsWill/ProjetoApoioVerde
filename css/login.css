@@ -1,0 +1,74 @@
+.login {
+    background-color: rgb(255, 255, 255);
+    max-width: 350px;
+    min-height: 40vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem;
+    margin-top: 10vh;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/*formulário*/
+
+.login h1 {
+    font-weight: 500;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+label, input {
+    position: relative;
+    outline: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    font-size: .8rem;
+}
+
+input {
+    border-bottom: 2px solid #323232;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+input:focus {
+    border-bottom: 2px solid black;
+}
+
+#forgot-pass {
+    text-align: right;
+    display: block;
+}
+
+input[type="submit"] {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    height: 40px;
+    border-radius: 20px;
+    margin-top: 30px;
+    color: white;
+    background: #4ab653;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: green;
+    transition: .7s;
+}
+
+#register-container a {
+    text-decoration: none;
+}
+
+#register-container a:hover {
+    color: green;
+}

@@ -11,10 +11,11 @@
     <!--Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
     <title>ApoioVerde</title>
 </head>
 
-<body>
+<body ondragstart="return false">
     <!--header-->
     <div id="header">
         <div class="container-fluid">
@@ -39,10 +40,10 @@
                             <a class="nav-link" href="projetos.html">Projetos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contato</a>
+                            <a class="nav-link" href="#contato">Contato</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Login | Cadastrar</a>
+                            <a class="nav-link" href="login.html">Login | Cadastrar</a>
                         </li>
                     </ul>
                 </div>
@@ -64,7 +65,7 @@
                         mais</a>
                 </div>
                 <div class="col-md-8 align-self-center text-center mb-md-0 mb-4 ">
-                    <img id="logo" src="img/img-banner.webp" class="img-fluid" alt="">
+                    <img id="logo" src="img/img-banner.webp" class="img-fluid block" alt="">
                 </div>
             </div>
         </div>
@@ -125,7 +126,7 @@
                         </a>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 ">
-                        <a class="passo">
+                        <a class="passo block2">
                             <div class="img container mb-3">
                                 <img src="img/img-enviar.png" width="150" height="150" class="img-fluid box-style">
                             </div>
@@ -137,37 +138,18 @@
                 </div>
             </div>
             <!--como-funciona-->
+
             <!--contato-->
-            <footer id="contato" class="block">
-                <div class="container">
-                    <div class="logo py-4">
-                        <div class="row">
-                            <div class="col-md-6 align-self-center text-center text-md-left ">
-                                <img id="style-footer" src="img/logo-img.png" class="img-fluid">
-                            </div>
-                            <div class="col-md-4 align-self-center text-right ">
-                                <ul>
-                                    <li>
-                                        <a href="">ícone</a>
-                                    </li>
-                                    <li>
-                                        <a href="">ícone</a>
-                                    </li>
-                                    <li>
-                                        <a href="">ícone</a>
-                                    </li>
-                                    <li>
-                                        <a href="">ícone</a>
-                                    </li>
-                                    <li>
-                                        <a href="">ícone</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+            <footer id="contato" class="contato ">
+                <div class="social-icons">
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-twitter-square"></i></a>
+                    <a href=""><i class="fab fa-facebook-square"></i></a>
                 </div>
+                <p>Copyright © ApoioVerde 2021. Todos os direitos reservados.</p>
             </footer>
+
             <!--contato-->
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
             <script src="js/bootstrap.min.js"></script>

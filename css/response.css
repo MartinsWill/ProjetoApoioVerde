@@ -7,30 +7,31 @@
     }
 }
 
+@media (min-width: 1317px) {
+    #como-funciona .box-style {
+        width: 150px;
+    }
+}
+
 /*MAX-WIDHT layout até o tamanho médio */
 
 @media (max-width: 991.98px) {
     #header .navbar-collapse {
         width: 100%;
     }
-    #como-funciona .box-style{
+    #como-funciona .box-style {
         width: 150px;
     }
 }
 
-@media (max-width: 767.98px) {
-    #contato ul li{
-        padding-top: 30px;
-        justify-content: center;
-    }
-}
-@media (max-width:1399.98px){
-    #como-funciona .box-style{
+@media (max-width:1399.98px) {
+    #como-funciona .box-style {
         width: 128px;
     }
 }
-@media (max-width:1199.98px){
-    #como-funciona .box-style{
+
+@media (max-width:1199.98px) {
+    #como-funciona .box-style {
         width: 150px;
     }
 }
