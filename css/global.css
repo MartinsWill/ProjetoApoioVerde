@@ -5,10 +5,12 @@ h1, h2, h3, h4, h5, h6 {
 .title {
     text-transform: uppercase;
 }
-a{
-    color:var(--primary);
+
+a {
+    color: var(--primary);
 }
-a:hover{
+
+a:hover {
     color: #3ac74d;
 }
 
@@ -16,26 +18,29 @@ a:hover{
     text-transform: uppercase;
     padding-left: 1.4rem;
     padding-right: 1.4rem;
+    border-radius: 8px;
 }
 
 .button-primary-outline {
     border-color: var(--primary);
-    text-transform: solid green;
+    text-transform: solid rgba(0, 128, 0, 0.658);
+    color: black;
 }
 
 .button-primary-outline:hover {
     transition: .8s;
-    background-color: var(--primary);
-    border-color: var(--primary);
+    background-color: #00822e;
+    border-color: white;
+    color: white;
 }
 
 .block {
     margin-bottom: 120px;
 }
+
 .block2 {
     margin-bottom: 200px;
 }
-
 
 #how-text {
     font-size: 20px;

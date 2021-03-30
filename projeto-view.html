@@ -1,9 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--CSS-->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/custom.css">
@@ -15,7 +16,7 @@
     <title>ApoioVerde</title>
 </head>
 
-<body>
+<body ondragstart="return false">
     <!--header-->
     <div id="header">
         <div class="container-fluid">
@@ -48,27 +49,24 @@
     </nav>
     </div>
     <!--header-->
-    <!--forms-->
-    <div class="container">
-        <div class="login block2">
-            <h1>Login</h1>
-            <form action="">
-                <label for="email">E-mail</label>
-                <input type="email" name="email" id="email" placeholder="Digite seu e-mail" autocomplete="off">
-                <label for="senha">Senha</label>
-                <input type="password" nome="password" id="password" placeholder="Digite sua senha" autocomplete="off">
-                <input type="submit" value="Login">
-            </form>
-            <div>
-                <div id="register-container">
-                    <p>Ainda nao possui uma conta?</p>
-                    <a href="registrar.html">Registrar</a>
+    <!--sobre-->
+    <div id="sobre">
+        <div class="container block">
+            <div class="row">
+                <div class="col-md-6 pt-4 mt-4 text-center align-self-center order-md-1 order-1">
+                    <img src="img/laranja-img" class="img-fluid">
                 </div>
-                <!--forms-->
+                <div class="col-md-6 align-self-center mb-md-0 mb-4 order-md-2 order-2">
+                    <h1 class="title">Laranja</h1>
+                    <p id="how-text">Nome do produtor
+                    </p>
+                    <p id="how-text">Uma breve descrição do produto.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-
+    <!--sobre-->
     <!--contato-->
     <footer id="contato" class="contato ">
         <div class="social-icons">
@@ -80,7 +78,6 @@
         <p>Copyright © ApoioVerde 2021. Todos os direitos reservados.</p>
     </footer>
     <!--contato-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
+
+</html>

@@ -9,6 +9,8 @@ body, html {
     margin-right: 0;
 }
 
+/*geral*/
+
 /*header, nav*/
 
 #header {
@@ -56,6 +58,7 @@ body, html {
     background: black;
     box-shadow: 0 0 30px 0 rgba(0, 0, 0, .4);
     z-index: 9999;
+    transition: all ease-in-out .2s;
 }
 
 #header.active a {
@@ -67,7 +70,8 @@ body, html {
     transform: scale(1.05);
     border-color: white;
 }
-.navbar-toggler{
+
+.navbar-toggler {
     background-color: white;
 }
 
@@ -82,6 +86,8 @@ body, html {
     text-transform: uppercase;
     font-size: 18px;
 }
+
+/*como-funciona*/
 
 #como-funciona .passo-a-passo {
     background-color: #7df38d18;
@@ -123,9 +129,13 @@ body, html {
     transform: scale(1.05);
 }
 
+/*como-funciona*/
+
 #style-footer {
     width: 75px;
 }
+
+/*contato*/
 
 .contato {
     width: 100%;
@@ -146,3 +156,42 @@ body, html {
 .social-icons a {
     transform: scale(1.05);
 }
+
+/*contato*/
+
+/*projetos*/
+
+#projetos .card {
+    color: black;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
+}
+
+#projetos .card {
+    margin-top: 40px;
+}
+
+#projetos .card .pass-text span {
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: black;
+}
+
+#projetos a.card {
+    display: block;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    color: black;
+    text-decoration: none;
+    transition: all ease-out 0.2s;
+}
+
+#projetos a.card:hover {
+    background: #fff;
+    cursor: pointer;
+    transform: scale(1.06);
+}
+
+/*projetos*/
