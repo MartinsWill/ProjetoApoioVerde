@@ -10,3 +10,6 @@ jQuery(document).ready(function ($) {
     }
 });
 
+function projeto_view() {
+    window.location.href = "projeto-view.html"
+}
