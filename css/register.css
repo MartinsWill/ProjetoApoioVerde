@@ -1,0 +1,115 @@
+/* geral */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+    border: none;
+}
+
+input, label {
+    position: relative;
+    outline: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    font-size: .8rem;
+}
+
+/* form */
+
+#main-container {
+    background-color: rgb(255, 255, 255);
+    max-width: 500px;
+    min-height: 40vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem;
+    margin-top: 5vh;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#main-container h1 {
+    font-weight: 500;
+    position: relative;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2.5rem;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.full-box {
+    flex: 1 1 100%;
+    position: relative;
+}
+
+.half-box {
+    flex: 1 1 45%;
+    position: relative;
+}
+
+.spacing {
+    margin-right: 2.5%;
+}
+
+label {
+    font-weight: bold;
+    font-size: .8rem;
+}
+
+input {
+    border: 2px solid #323232;
+    padding: 10px;
+    font-size: .9rem;
+    margin-bottom: 15px;
+}
+
+
+input[type="submit"] {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    height: 40px;
+    border-radius: 20px;
+    margin-top: 30px;
+    color: white;
+    background: #4ab653;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: green;
+    transition: .7s;
+}
+
+#agreement {
+    margin-right: 5px;
+}
+
+#agreement, #agreement-label {
+    display: inline-block;
+    width: auto;
+}
+
+.error-validation {
+    color: #ff1a1a;
+    position: absolute;
+    top: 57px;
+    font-size: 12px;
+}
+
+.template {
+    display: none;
+}
