@@ -53,14 +53,18 @@
         <h1>Registrar</h1>
         <form action="">
             <label for="nome">Nome</label>
-            <input type="name" name="name" id="name" placeholder="Digite seu nome" autocomplete="off">
+            <input type="text" name="name" id="nome" placeholder="Ex: Maria" autocomplete="off"><span id="nomeError"
+                class="error"></span>
             <label for="sobrenome">Sobrenome</label>
-            <input type="text" nome="last-name" id="last-name" placeholder="Digite seu sobrenome" autocomplete="off">
+            <input type="text" nome="sobrenome" id="sobrenome" placeholder="Ex: Silva" autocomplete="off"><span
+                id="sobrenomeError" class="error"></span>
             <label for="email">Email</label>
-            <input type="text" nome="email" id="email" placeholder="Digite seu e-mail" autocomplete="off">
+            <input type="email" nome="email" id="email" placeholder="Ex: seuemail@example.com" autocomplete="off"><span
+                id="emailError" class="error"></span>
             <label for="password">Senha</label>
-            <input type="password" nome="password" id="password" placeholder="Digite sua senha" autocomplete="off">
-            <input type="submit" value="Registrar">
+            <input type="password" nome="password" id="senha" placeholder="Ex: suasenha" autocomplete="off"
+                maxlength="8"><span id="senhaError" class="error"></span>
+            <input type="button" value="Registrar" class="btn button-primary-outline" onclick="validaFormulario()">
         </form>
         <div>
             <div id="register-container">
@@ -76,7 +80,7 @@
             <a href=""><i class="fab fa-facebook-f"></i></a>
             <a href=""><i class="fab fa-instagram"></i></a>
             <a href=""><i class="fab fa-twitter-square"></i></a>
-            <a href=""><i class="fab fa-facebook-square"></i></a>
+            <a href=""><i class="fab fa-linkedin-in"></i></a>
         </div>
         <p>Copyright © ApoioVerde 2021. Todos os direitos reservados.</p>
     </footer>
@@ -84,4 +88,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/registrar.js"></script>
 </body>
