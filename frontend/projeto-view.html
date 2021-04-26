@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--CSS-->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/custom.css">
-    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/global.css">
     <!--Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -22,8 +22,8 @@
     <div id="header">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="index.html">
-                    <img src="img/logo-img.png" width="50" height="50" class="d-inline-block align-center "> ApoioVerde
+                <a class="navbar-brand" href="inicial.html">
+                    <img src="../img/logo-img.png" width="50" height="50" class="d-inline-block align-center "> ApoioVerde
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav navbar-right">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Página Inicial</a>
+                            <a class="nav-link" href="inicial.html">Página Inicial</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="projetos.html">Projetos</a>
@@ -55,18 +55,19 @@
         <div class="container block">
             <div class="row pt-5">
                 <div class=" col-md-8 mb-md-0 mb-4">
-                    <img src="img/laranja-img" class="img-fluid" alt="">
+                    <span id="imagem"></span>
+                    <!-- <img src="img/laranja-img" class="img-fluid" alt=""> -->
                 </div>
                 <div id="card-view" class="col-md-4 align-self-center mb-md-0">
-                    <h2>Nome do produto</h2>
-                    <p>Nome do produtor</p>
-                    <p>R$ 1.000 arrecadado</p>
+                    <h2 id="nomeProjeto">Nome do produto</h2>
+                    <p id="nomeProdutor">Nome do produtor</p>
+                    <p id="valorArrecado">R$ 1.000 arrecadado</p>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
                             role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
                             style="width: 20%"></div>
                     </div>
-                    <p>Meta R$5000,00</p>
+                    <p id="valorMeta">Meta R$5000,00</p>
                     <button type="button" class="btn button-primary-outline button2">Apoiar projeto
                     </button>
                 </div>
@@ -114,6 +115,56 @@
         <!--contato-->
     </div>
     <!--view-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    
+    
+    $( document ).ready(function() {
+        var parametro = location.search.substring(1)
+        console.log(parametro)
+        
+        sql = `SELECT PJ.NOME, PD.NOME AS NOME_PRODUTOR, PJ.IMAGEM, PJ.META_FINAL FROM DB_APOIOVERDE.TB_PROJETO AS PJ
+                INNER JOIN DB_APOIOVERDE.TB_USUARIO AS PD
+                ON PJ.ID_PRODUTOR = PD.ID
+                WHERE PJ.ID = '${parametro}'`
+    
+        jQuery.ajax({
+            type: "POST",
+            url: '../backend/crud.class.php',
+            dataType: 'json',
+            data: {functionname: 'execute_query', arguments: sql},
+    
+            success: function (data, textstatus) {
+                          if( !('error' in data) ) {
+                              resultado = JSON.parse(data.result);
+    
+                            console.log(resultado)
+                              resultado.forEach(element => {
+                                  imagens = JSON.parse(element.IMAGEM)
+                                  
+                                //$('#imagem').append(`<img src="https://i.imgur.com/${imagens[0]}.jpg" class="img-fluid" alt="">`)
+                                  $('#imagem').append(`<div style="background-image: url('https://i.imgur.com/${imagens[0]}.jpg'); background-position: center; background-size: cover; width:735px; height:600px; border-radius:5px" class="img-fluid"> </div>`)
+                                  $('#nomeProjeto').html(element.NOME)
+                                  $('#nomeProdutor').html(element.NOME_PRODUTOR)
+
+                                  $('#valorMeta').html(`Meta R$${element.META_FINAL}`)
+                                    
+
+                              });
+    
+    
+                          }
+                          else {
+                              console.log(data.error);
+                          }
+                    }
+        })
+        
+    });
+    
+    </script>
 
 </body>
 

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <title>Cadastro usuario</title>
+</head>
+
+<body>
+    <!--header-->
+    <div id="header">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="inicial.html">
+                    <img src="../img/logo-img.png" width="50" height="50" class="d-inline-block align-center ">
+                    ApoioVerde
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link" href="inicial.html">Página Inicial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="projetos.html">Projetos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contato">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Login | Cadastrar</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!--header-->
+    <!-- Cadastro-->
+    <div class="container">
+        <div id="main-container2">
+            <h1>Cadastrar Projeto</h1>
+            <form onsubmit="return uploadImagem(document.getElementById('file'))">
+                <label for="">Nome:</label>
+                <input type="text" id="nome" placeholder="Ex: Árvore de laranja" maxlength="40" required> <span
+                    id="nomeError" class="error"></span>
+
+                <label for="">Descrição:</label>
+                <br /> <textarea style="border:solid 2px rgb(8, 5, 0);" type="text" id="descricao1"
+                    placeholder="Ex: Uma pequena árvore de laranja que será plantada e cultivada na temporada de Agosto."
+                    rows="2" cols="47" required></textarea> <span id="descricaoError" class="error"></span>
+
+                <label for="">Descrição:</label>
+                <br /> <textarea style="border:solid 2px rgb(8, 5, 0);" type="text" id="descricao2"
+                    placeholder="Ex: Uma pequena árvore de laranja que será plantada e cultivada na temporada de Agosto."
+                    rows="2" cols="47" required></textarea> <span id="descricaoError" class="error"></span>
+
+                <label for="">Descrição:</label>
+                <br /> <textarea style="border:solid 2px rgb(8, 5, 0);" type="text" id="descricao3"
+                    placeholder="Ex: Uma pequena árvore de laranja que será plantada e cultivada na temporada de Agosto."
+                    rows="2" cols="47" required></textarea> <span id="descricaoError" class="error"></span>
+
+
+                <label for="">Valor:</label><input type="number" id="valor" required maxlength="4"><span id="valorError"
+                    class="error"></span>
+                <label for="">Meta final:</label><input type="number" id="metaf" placeholder="Ex: R$4.000" required
+                    maxlength="8"> <span id="metafError" class="error"></span>
+                <label for="">Data limite:</label><input type="date" id="data" required> <span id="dataError"
+                    class="error"></span>
+                <input type="file" id="file" name="file[]" accept="image/png, image/jpeg" multiple> </input>
+                </br />
+                <input id="btn-cadastrar" type="submit" class="text-center" value='Cadastrar'>
+                <br /><span id="spanImagem"></span>
+            </form>
+        </div>
+    </div>
+    <!--Cadastro-->
+    <!--contato-->
+    <footer id="contato" class="contato  ">
+        <div class="social-icons">
+            <a href=""><i class="fab fa-facebook-f"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href=""><i class="fab fa-twitter-square"></i></a>
+            <a href=""><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>Copyright © ApoioVerde 2021. Todos os direitos reservados.</p>
+    </footer>
+    <!--contato-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+</body>
+<script src="../js/cadastro_projeto.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        console.log("ready!");
+        var formdata = new FormData();
+        formdata.append("refresh_token", "076c1914bfd1dc72b49b1d070435928fe8acabc4");
+        formdata.append("client_id", "3f97679613f7d0f");
+        formdata.append("client_secret", "93f04efd1b88b50506a914c2656374bc46ee89eb");
+        formdata.append("grant_type", "refresh_token");
+
+        var requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        fetch("https://api.imgur.com/oauth2/token", requestOptions)
+            .then(response => response.json())
+            .then(response => {
+                token_acesso = response.access_token
+            })
+            .catch(error => console.log('error', error));
+    });
+</script>
+
+</html>

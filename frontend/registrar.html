@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--CSS-->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/custom.css">
-    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/global.css">
     <!--CSS-->
     <!--Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -22,8 +22,8 @@
     <div id="header">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="index.html">
-                    <img src="img/logo-img.png" width="50" height="50" class="d-inline-block align-center "> ApoioVerde
+                <a class="navbar-brand" href="inicial.html">
+                    <img src="../img/logo-img.png" width="50" height="50" class="d-inline-block align-center "> ApoioVerde
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav navbar-right">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Página Inicial</a>
+                            <a class="nav-link" href="inicial.html">Página Inicial</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="projetos.html">Projetos</a>
@@ -55,25 +55,29 @@
         <div id="main-container">
             <div>
                 <h1>Registrar</h1>
-                <form id="register-form" action="">
+                <form id="register-form" onsubmit="return validaFormulario();">
                     <div class="half-box spacing">
                         <label for="name">Nome</label>
                         <input type="text" name="nome" id="nome" placeholder="Ex: Maria" autocomplete="off"
-                            data-required data-min-length="3" data-max-length="16">
+                            data-required data-min-length="3" data-max-length="16" />
+                        <span id="nomeError" class="error"></span>
                     </div>
                     <div class="half-box">
                         <label for="lastname">Sobrenome</label>
-                        <input type="text" name="lastname" id="lastname" placeholder="Ex: Silva" autocomplete="off">
+                        <input type="text" name="lastname" id="sobrenome" placeholder="Ex: Silva" autocomplete="off" />
+                        <span id="sobrenomeError" class="error"></span>
                     </div>
                     <div class="full-box">
                         <label for="email">E-mail</label>
                         <input type="text" name="email" id="email" placeholder="Ex: seuemail@email.com"
-                            autocomplete="off">
+                            autocomplete="off" />
+                        <span id="emailError" class="error"></span>
                     </div>
                     <div class="full-box">
                         <label for="email">Senha</label>
-                        <input type="password" name="password" id="password" placeholder="Ex: suasenha"
-                            autocomplete="off">
+                        <input type="password" name="password" id="senha" placeholder="Ex: suasenha"
+                            autocomplete="off" />
+                        <span id="senhaError" class="error"></span>
                     </div>
                     <div class="full-box">
                         <input id="btn-submit" type="submit" value="Registrar">
@@ -101,8 +105,10 @@
     </footer>
     <!--contato-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="../js/registrar.js"></script>
 </body>
 
 </html>

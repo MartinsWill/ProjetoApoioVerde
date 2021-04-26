@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--CSS-->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+    <title>ApoioVerde</title>
+</head>
+
+<body ondragstart="return false">
+    <!--header-->
+    <div id="header">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="inicial.html">
+                    <img src="../img/logo-img.png" width="50" height="50" class="d-inline-block align-center "> ApoioVerde
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link" href="inicial.html">Página Inicial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="inicial.html#como-funciona">Como funciona?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="projetos.html">Projetos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contato">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Login | Cadastrar</a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+    </nav>
+    </div>
+    <!--header-->
+    <!--projetos-->
+    <div id="projetos" class="block">
+        <div class="container">
+            <h1 class="text-center pt-5 title">Apoiar um projeto</h1> &nbsp;
+            <div class="row" id="listaProjetos">
+
+
+                <!-- <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <a class="card ">
+                        <div class="img container mb-3">
+                            <img src="img/laranja-img" width="350" height="200" class="img-fluid">
+                        </div>
+                        <h5>Nome do projeto/produto</h5>
+                        <p class="mb-0">Nome do produtor</p>
+                        <button type="button" onclick="projeto_view()" class="btn button-primary-outline button">Ver
+                            projeto</button>
+                    </a>
+                </div> -->
+
+
+
+            </div>
+        </div>
+    </div>
+    <!--projetos-->
+    <!--contato-->
+    <footer id="contato" class="contato ">
+        <div class="social-icons">
+            <a href=""><i class="fab fa-facebook-f"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href=""><i class="fab fa-twitter-square"></i></a>
+            <a href=""><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>Copyright © ApoioVerde 2021. Todos os direitos reservados.</p>
+    </footer>
+
+    <!--contato-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+        integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
+        crossorigin="anonymous"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+<script>
+
+
+$( document ).ready(function() {
+
+    sql = `SELECT P.IMAGEM, P.ID, P.NOME, U.NOME AS NOME_PRODUTOR FROM DB_APOIOVERDE.TB_PROJETO AS P
+            INNER JOIN DB_APOIOVERDE.TB_USUARIO AS U
+            ON P.ID_PRODUTOR = U.ID
+            ORDER BY P.ID DESC
+            ;`
+
+    cons = ''
+
+    jQuery.ajax({
+        type: "POST",
+        url: '../backend/crud.class.php',
+        dataType: 'json',
+        data: {functionname: 'execute_query', arguments: sql},
+
+        success: function (data, textstatus) {
+                      if( !('error' in data) ) {
+                          resultado = JSON.parse(data.result);
+
+                        console.log(resultado)
+                          resultado.forEach(element => {
+                              imagens = JSON.parse(element.IMAGEM)
+                              console.log(imagens)
+                              cons += `
+                                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                                    <a class="card " onclick="window.location.href = 'projeto-view.html?${element.ID}'">
+                                        <div class="img container mb-3">
+                                            <div style="background-image: url('https://i.imgur.com/${imagens[0]}m.jpg'); background-position: center; background-size: cover; width:500px; height:220px;" class="img-fluid"> </div>
+                                        </div>
+                                        <h5>${element.NOME}</h5>
+                                        <p class="mb-0">${element.NOME_PRODUTOR}</p>
+                                        <button type="button" class="btn button-primary-outline button">Ver
+                                            projeto</button>
+                                    </a>
+                                </div>
+                              `
+                          });
+
+                          $('#listaProjetos').append(cons);
+
+                      }
+                      else {
+                          console.log(data.error);
+                      }
+                }
+    })
+    
+});
+
+</script>
+
+
+</html>

@@ -3,7 +3,7 @@
 define('DB_HOST'        , "localhost"); 
 define('DB_USER'        , "root");
 define('DB_PASSWORD'    , "");
-define('DB_NAME'        , "apoioverde");
+define('DB_NAME'        , "DB_APOIOVERDE");
 define('DB_DRIVER'      , "mysql");
 
 class Connection{
@@ -39,7 +39,3 @@ class Connection{
 	}
    
 }
-
-
-
-?>
