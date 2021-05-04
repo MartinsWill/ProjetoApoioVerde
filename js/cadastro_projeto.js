@@ -76,12 +76,12 @@ function validaFormulario(imgHash) {
     // }
     // else{
 
-    let sql = `INSERT INTO DB_APOIOVERDE.TB_PROJETO 
+    let sql = `INSERT INTO tb_projeto 
     (NOME, OQUE_APOIAREI, OQUE_RECEBEREI, QUANDO_RECEBEREI, VALOR, META_FINAL, ESTADO, DATA_ENTREGA, IMAGEM, ID_PRODUTOR) 
     VALUES 
-    ("${$("#nome").val()}","${$("#descricao1").val()}","${$("#descricao2").val()}","${$("#descricao3").val()}","${$("#valor").val()}","${$("#metaf").val()}", 1, "${$("#data").val()}", '${imgHash}', "${sessionStorage.getItem("id_produtor")}");`
+    ("${$("#nome").val()}","${$("#descricao1").val()}","${$("#descricao2").val()}","${$("#descricao3").val()}","${$("#valor").val()}","${$("#metaf").val()}", 1, "${$("#data").val()}", '${imgHash}', "${localStorage.getItem('id_usuario')}");`
 
-    jQuery.ajax({
+    $.ajax({
         type: "POST",
         url: '../backend/crud.class.php',
         dataType: 'json',
@@ -100,25 +100,6 @@ function validaFormulario(imgHash) {
         }
     });
 
-    // sql = `SELECT ID_PROJETO FROM APOIOVERDE.TB_PROJETO WHERE NOME_PROJETO = "${$("#nome").val()}";`
 
-    // jQuery.ajax({
-    //     type: "POST",
-    //     url: '../backend/crud.class.php',
-    //     dataType: 'json',
-    //     data: {functionname: 'execute_query', arguments: sql},
-
-    //     success: function (data, textstatus) {
-    //                   if( !('error' in data) ) {
-    //                       yourVariable = data.result;
-    //                       console.log(data)
-    //                   }
-    //                   else {
-    //                       console.log(data.error);
-    //                   }
-    //             }
-    // });
-
-    //}
 
 }

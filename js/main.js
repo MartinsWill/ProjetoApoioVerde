@@ -1,4 +1,4 @@
-jQuery(document).ready(function ($) {
+$(document).ready(function ($) {
 
     window.onscroll = function () {
         if (window.pageYOffset > 140) {

@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
             center: 'title',
             right: ''
         },
-        events: [{
+        events: [
+            {
                 title: 'Previsão de Entrega',
                 start: data_inicio,
                 end: data_fim,

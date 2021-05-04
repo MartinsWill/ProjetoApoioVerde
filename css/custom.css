@@ -1,8 +1,14 @@
 /*geral*/
 
-body,
-html {
+body, html {
     font-family: 'Kanit', sans-serif;
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 100%;
+
+    height: 100%;
 }
 
 .container-fluid {
@@ -146,6 +152,11 @@ html {
 }
 
 /*contato*/
+footer {
+
+    margin-top: auto;
+
+}
 
 .contato {
     width: 100%;
@@ -154,6 +165,7 @@ html {
     text-align: center;
     background-color: black;
     color: white;
+    position: relative;
 }
 
 .social-icons a {
@@ -287,7 +299,6 @@ html {
     border-radius: 10px;
     text-align: center;
 }
-
 #main-container h1 {
     font-weight: 500;
     position: relative;
@@ -295,7 +306,6 @@ html {
     margin-bottom: 25px;
     font-size: 2.5rem;
 }
-
 form {
     display: flex;
     flex-wrap: wrap;
@@ -310,17 +320,14 @@ form {
     border: none;
 }
 
-#btn-cadastrar:hover {
+#btn-cadastrar:hover{
     background: green;
     transition: ease-in-out .4s;
 }
-
-#descricao {
+#descricao{
     margin-bottom: 10px;
 }
-
-#valor {
-    margin-top: 10px;
+#valor{
+    margin-top:  10px;
 }
-
 /*cadastro de projetos*/

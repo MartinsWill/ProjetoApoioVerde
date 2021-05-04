@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--CSS-->
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/custom.css">
-    <link rel="stylesheet" href="../css/global.css">
     <!--Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css">
+
 
     <title>ApoioVerde</title>
 </head>
@@ -23,7 +25,8 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="inicial.html">
-                    <img src="../img/logo-img.png" width="50" height="50" class="d-inline-block align-center "> ApoioVerde
+                    <img src="../img/logo-img.png" width="50" height="50" class="d-inline-block align-center ">
+                    ApoioVerde
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,8 +71,8 @@
                             style="width: 20%"></div>
                     </div>
                     <p id="valorMeta">Meta R$5000,00</p>
-                    <button type="button" class="btn button-primary-outline button2">Apoiar projeto
-                    </button>
+                    <a href="#receber-div" style="color: whitesmoke;" class="btn btn-success button2">
+                        Ver benefícios</a>
                 </div>
             </div>
             <div id="border"></div>
@@ -87,21 +90,46 @@
                 cuidando dele, você pode renovar sua adoção ano após ano. Se sua árvore de laranja morrer, iremos
                 substituí-la sem custo adicional e garantindo a entrega de sua colheita de outras árvores.</p>
 
-            <h2 class="infot-text">O que você irá receber?</h2>
-            <p class="info-text">Durante a época de colheita, você pode receber progressivamente a quantidade de
-                colheita de laranjas que
-                você reserva no momento da adoção.
-                Formato de envio: 5kg de laranja.
-                A laranja é doce, firme e crocante com uma cor laranja intensa.
-                Os frutos são achatados e semelhantes em tamanho a uma maçã. br
-                A melhor maneira de guardar a laranja é na geladeira, pois você pode saboreá-lo por mais tempo. Mantenha
-                as frutas em local fresco, seco e longe da luz.</p>
+            <p id="receber-div">
+            <div class="p-5"
+                style='background-color:#282a36; color: rgb(235, 236, 228); padding: inherit; border-radius: 5px;'>
+                <br />
+                <h2 class="infot-text">O que você irá receber?</h2>
+                <div class="info-text">
 
+                    Durante a época de colheita, você pode receber progressivamente a quantidade de
+                    colheita de laranjas que
+                    você reserva no momento da adoção.
+                    <p>Apoie esse projeto por <b style="color:#50fa7b">R$25,00</b> e receba em sua casa:
+
+                    <ol><b style="color:#f1fa8c">5kg de Laranja</b></ol>
+                    <ol><b style="color:#f1fa8c">300g Geleia de laranja</b></ol>
+                    </p>
+                    A laranja é doce, firme e crocante com uma cor laranja intensa.
+                    Os frutos são achatados e semelhantes em tamanho a uma maçã. br
+                    A melhor maneira de guardar a laranja é na geladeira, pois você pode saboreá-lo por mais tempo.
+                    Mantenha
+                    as frutas em local fresco, seco e longe da luz.
+                    <br />
+                    <br />
+                    <button id="btn-apoio" type="button" class="btn btn-success col-12" onclick="modalCadastro()"
+                        data-bs-toggle="modal" data-bs-target="#modalInfo">
+                        Apoiar agora!
+                    </button>
+                    <br /><br />
+                </div>
+            </div>
+
+            </p>
             <h2 class="infot-text">Quando irei receber o produto?</h2>
-            <p class="info-text">Esta variedade é colhida em seu tempo ideal de maturação entre meados de setembro e
-                meados de outubro, aproximadamente.</p>
+            <div class="info-text">
+                <p>Esta variedade é colhida em seu tempo ideal de maturação entre meados de setembro e
+                    meados de outubro, aproximadamente.</p>
+
+                <div id='calendar'></div>
+                <br />
+            </div>
         </div>
-        <!--contato-->
         <footer id="contato" class="contato  ">
             <div class="social-icons">
                 <a href=""><i class="fab fa-facebook-f"></i></a>
@@ -113,58 +141,141 @@
         </footer>
 
         <!--contato-->
+
+        <!--ModalLogin-->
+        <!-- <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLogin" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class="modal-text" id="modalLogin"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h1>Login</h1>
+                        <form onsubmit="return validaLogin();">
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email" id="email" placeholder="Digite seu e-mail"
+                                autocomplete="off" required>
+                            <label for="senha">Senha</label>
+                            <input type="password" nome="password" id="senha" placeholder="Digite sua senha"
+                                autocomplete="off" required>
+                            <span id="loginInfo" class="error" style="color:red;"></span>
+                            <input type="submit" value="Login">
+                        </form>
+                        <div>
+                            <div id="register-container text-center">
+                                <p id="conta">Ainda nao possui uma conta?</p>
+                                <button id="btn-login" data-bs-toggle="modal" data-bs-target="#modalRegistrar"
+                                    data-bs-dismiss="modalLogin">Registrar</button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-success"  
+                                data-bs-dismiss="modal">Fechar</button> 
+                            <button id="btn-semLogin" type="button" class="btn btn-success">Apoio sem Login !</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        <!--ModalLogin -->
+
+        <!--ModalRegistrar -->
+        <div class="modal" id="modalInfo" tabindex="-1" aria-labelledby="modalInfo" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class="modal-text" id="modalInfo"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h1>Dados Pessoais</h1>
+                        <h4 id="text-h4">Insira sua informações para concluir o apoio ao projeto.</h4>
+                        <form id="register-form" onsubmit="return validaFormulario();">
+                            <div class="half-box spacing">
+                                <label for="name">Nome</label>
+                                <input type="text" name="nome" id="nome" placeholder="Ex: Maria" autocomplete="off"
+                                    data-required data-min-length="3" data-max-length="16" required />
+                            </div>
+                            <div class="half-box">
+                                <label for="name">Sobrenome</label>
+                                <input type="text" name="lastname" id="sobrenome" placeholder="Ex: Silva"
+                                    autocomplete="off" required />
+                            </div>
+                            <div class="half-box spacing">
+                                <label for="name">CPF</label>
+                                <input type="text" name="cpf" id="cpf" placeholder="Ex: 12345678910" autocomplete="off"
+                                    maxlength="11" required />
+                            </div>
+                            <div class="half-box ">
+                                <label for="name">Telefone</label>
+                                <input type="text" name="tel" id="telefone" placeholder="Ex: (99) 99999-9999)"
+                                    autocomplete="off" maxlength="13" required />
+                            </div>
+                            <div class="full-box">
+                                <label for="email">E-mail</label>
+                                <input type="text" name="email" id="email" placeholder="Ex: seuemail@email.com"
+                                    autocomplete="off" required />
+                            </div>
+                            <div class="full-box">
+                                <label for="email">Logradouro</label>
+                                <input type="text" name="logradouro" id="logradouro"
+                                    placeholder="Ex: Rua Sete de Setembro" autocomplete="off" required />
+                            </div>
+                            <div class="half-box spacing">
+                                <label for="lastname">Cidade</label>
+                                <input type="text" name="cidade" id="cidade" placeholder="Ex: Itájuba"
+                                    autocomplete="off" required />
+                            </div>
+                            <div class="half-box">
+                                <label for="lastname">Estado</label>
+                                <input type="text" name="estado" id="estado" placeholder="Ex: MG" autocomplete="off"
+                                    maxlength="2" required />
+                            </div>
+
+                            <div class="full-box">
+                                <label for="email">Bairro</label>
+                                <input type="text" name="bairro" id="bairro" placeholder="Ex: Centro" autocomplete="off"
+                                    required />
+                            </div>
+                            <div class="half-box spacing">
+                                <label for="lastname">CEP</label>
+                                <input type="number" name="cep" id="cep" placeholder="Ex: 37510-000" autocomplete="off"
+                                    maxlength="8" required />
+                            </div>
+                            <div class="half-box">
+                                <label for="lastname">Número</label>
+                                <input type="number" name="numero" id="numero" placeholder="Ex: 25" autocomplete="off"
+                                    required />
+                            </div>
+                            <div class="full-box">
+                                <input id="btn-submit" type="submit" value="Concluir Apoio">
+                            </div>
+                        </form>
+                        <div id="register-container text-center">
+                            <p id="conta">Já possui uma conta?</p>
+                            <a id="btn-registrar" href="login.html">Fazer Login</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-outline-success"  
+                                data-bs-dismiss="modal">Fechar</button> -->
+                        <!-- <button id="btn-semLogin" type="button" class="btn btn-success">Apoio sem Login
+                                !</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--ModalRegistrar -->
     </div>
     <!--view-->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/projeto-view.js"></script>
 
-<script>
-    
-    
-    $( document ).ready(function() {
-        var parametro = location.search.substring(1)
-        console.log(parametro)
-        
-        sql = `SELECT PJ.NOME, PD.NOME AS NOME_PRODUTOR, PJ.IMAGEM, PJ.META_FINAL FROM DB_APOIOVERDE.TB_PROJETO AS PJ
-                INNER JOIN DB_APOIOVERDE.TB_USUARIO AS PD
-                ON PJ.ID_PRODUTOR = PD.ID
-                WHERE PJ.ID = '${parametro}'`
-    
-        jQuery.ajax({
-            type: "POST",
-            url: '../backend/crud.class.php',
-            dataType: 'json',
-            data: {functionname: 'execute_query', arguments: sql},
-    
-            success: function (data, textstatus) {
-                          if( !('error' in data) ) {
-                              resultado = JSON.parse(data.result);
-    
-                            console.log(resultado)
-                              resultado.forEach(element => {
-                                  imagens = JSON.parse(element.IMAGEM)
-                                  
-                                //$('#imagem').append(`<img src="https://i.imgur.com/${imagens[0]}.jpg" class="img-fluid" alt="">`)
-                                  $('#imagem').append(`<div style="background-image: url('https://i.imgur.com/${imagens[0]}.jpg'); background-position: center; background-size: cover; width:735px; height:600px; border-radius:5px" class="img-fluid"> </div>`)
-                                  $('#nomeProjeto').html(element.NOME)
-                                  $('#nomeProdutor').html(element.NOME_PRODUTOR)
-
-                                  $('#valorMeta').html(`Meta R$${element.META_FINAL}`)
-                                    
-
-                              });
-    
-    
-                          }
-                          else {
-                              console.log(data.error);
-                          }
-                    }
-        })
-        
-    });
-    
-    </script>
+    <script src="../plugins/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="../plugins/sweetalert2/dist/sweetalert2.min.css">
 
 </body>
 

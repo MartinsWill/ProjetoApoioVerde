@@ -1,10 +1,11 @@
 <?php 
 
-define('DB_HOST'        , "localhost"); 
-define('DB_USER'        , "root");
-define('DB_PASSWORD'    , "");
-define('DB_NAME'        , "DB_APOIOVERDE");
+define('DB_HOST'        , "fdb27.mutanthost.com"); 
+define('DB_USER'        , "3823449_apoioverde");
+define('DB_PASSWORD'    , "apoioverde26042021");
+define('DB_NAME'        , "3823449_apoioverde");
 define('DB_DRIVER'      , "mysql");
+
 
 class Connection{
 
@@ -19,7 +20,8 @@ class Connection{
        
        try {
            if(!isset($connection)){
-               $connection =  new PDO($pdoConfig, DB_USER, DB_PASSWORD);
+               $connection = new PDO('mysql:host=' . DB_HOST . ';dbname='. DB_NAME .';charset=utf8mb4', DB_USER, DB_PASSWORD);
+               //$connection =  new PDO($pdoConfig, DB_USER, DB_PASSWORD);
                $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                
            }
@@ -39,3 +41,7 @@ class Connection{
 	}
    
 }
+
+
+
+?>

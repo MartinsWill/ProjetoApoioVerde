@@ -1,0 +1,61 @@
+.modal-body {
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.modal-body label {
+    margin-top: 5px;
+    text-decoration: none;
+}
+
+.modal-body a {
+    color: green;
+}
+
+.modal-body a:hover {
+    text-decoration: none;
+    color: #4ab653;
+}
+
+.modal-header {
+    background: #4ab653;
+}
+
+#btn-semLogin {
+    color: #ff5555;
+    border-color: #ff5555;
+    background: none;
+}
+
+#btn-semLogin:hover {
+    background: #ff5555;
+    color: #fff;
+    transition: ease-in-out .2s;
+}
+
+#btn-login {
+    color: #4ab653;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+#btn-login:hover {
+    transform: scale(1.05);
+}
+
+#btn-registrar {
+    color: #4ab653;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+#btn-registrar:hover {
+    transform: scale(1.05);
+}

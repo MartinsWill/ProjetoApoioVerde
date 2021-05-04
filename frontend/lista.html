@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--CSS-->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+
+    <title>ApoioVerde</title>
+</head>
+
+<body>
+    <!--header-->
+    <div id="header">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="inicial.html">
+                    <img src="../img/logo-img.png" width="50" height="50" class="d-inline-block align-center ">
+                    ApoioVerde
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav navbar-right">
+                    <li class="nav-item">
+                        <a class="nav-link" href="inicial.html">Página Inicial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projetos.html">Projetos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login | Cadastrar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+</div>
+<!--header-->
+
+<div class="card p-5">
+    <h2 id='titulo'></h2>
+    
+    <table id="table_lista" class="display"></table>
+    
+</div>
+
+    <!--contato-->
+    <footer id="contato" class="contato ">
+        <div class="social-icons">
+            <a href=""><i class="fab fa-facebook-f"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href=""><i class="fab fa-twitter-square"></i></a>
+            <a href=""><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>Copyright © ApoioVerde 2021. Todos os direitos reservados.</p>
+    </footer>
+    <!--contato-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            if (localStorage.getItem('id_usuario') == null) {
+                window.location.replace(`../frontend/inicial.html`);
+            }
+
+            else if (localStorage.getItem('tipo_usuario') == 'C') {
+
+                $('#titulo').html(`Apoios do Cliente`)
+                let tabela = `
+                <thead>
+                    <tr>
+                        <th>Nome Projeto</th>
+                        <th>Oque receberei?</th>
+                        <th>Valor Apoio</th>
+                        <th>Data Entrega</th>
+                        <th>Data Pedido</th>
+                    </tr>
+                </thead>
+                <tbody>`
+
+                let sql = `select p.nome, oque_receberei, valor, data_entrega, data_modificacao from tb_pedido
+                        inner join tb_usuario as u
+                        on id_cliente = u.id
+                        inner join tb_projeto as p
+                        on id_projeto = p.id
+                        where id_cliente = ${localStorage.getItem('id_usuario')};`
+
+                $.ajax({
+                    type: "POST",
+                    url: '../backend/crud.class.php',
+                    dataType: 'json',
+                    data: { functionname: 'execute_query', arguments: sql }
+
+                }).done(function (obj) {
+                    resultado = JSON.parse(obj.result)
+                    console.log(resultado)
+
+                    if (resultado.length > 0) {
+
+                        resultado.forEach(element => {
+                            tabela += `
+                                        <tr>
+                                            <td>${element.nome}</td>
+                                            <td>${element.oque_receberei}</td>
+                                            <td>${element.valor}</td>
+                                            <td>${element.data_entrega}</td>
+                                            <td>${element.data_modificacao}</td>
+                                        </tr>`
+                        });
+                    }
+                    tabela += `</tbody>`
+                    console.log(tabela)
+                    $('#table_lista').html(tabela)
+
+                    $('#table_lista').DataTable();
+                })
+
+
+            }
+            else if (localStorage.getItem('tipo_usuario') == 'P') {
+                $('#titulo').html(`Projetos apoiados do produtor`)
+                let tabela = `
+                <thead>
+                    <tr>
+                        <th>Nome comprador</th>
+                        <th>E-mail comprador</th>
+                        <th>Nome Projeto</th>
+                        <th>Valor Apoio</th>
+                        <th>Data Entrega Projeto</th>
+                        <th>Data Pedido Projeto</th>
+                    </tr>
+                </thead>
+                <tbody>`
+
+                let sql = `select u.nome as nomecliente, u.sobrenome as sobrenomecliente, u.email as emailcliente, p.nome as nomeprojeto, p.valor as valorprojeto, p.data_entrega, data_modificacao from tb_pedido
+                        inner join tb_projeto as p
+                        on id_projeto = p.id
+                        inner join tb_usuario as u
+                        on id_cliente = u.id
+                        where id_produtor = ${localStorage.getItem('id_usuario')};`
+
+                jQuery.ajax({
+                    type: "POST",
+                    url: '../backend/crud.class.php',
+                    dataType: 'json',
+                    data: { functionname: 'execute_query', arguments: sql },
+
+                }).done(function (obj) {
+
+                    resultado = JSON.parse(obj.result)
+                    console.log(resultado)
+
+                    if (resultado.length > 0) {
+
+                        resultado.forEach(element => {
+                            console.log(element.nomecliente)
+                            tabela += `<tr>
+                                    <td>${element.nomecliente} ${element.sobrenomecliente}</td>
+                                    <td>${element.emailcliente}</td>
+                                    <td>${element.nomeprojeto}</td>
+                                    <td>${element.valorprojeto}</td>
+                                    <td>${element.data_entrega}</td>
+                                    <td>${element.data_modificacao}</td>
+                                </tr>`
+                        });
+
+                    }
+
+
+                    tabela += `</tbody>`
+                    $('#table_lista').html(tabela)
+
+                    $('#table_lista').DataTable();
+                })
+
+            }
+        })
+
+    </script>
+</body>

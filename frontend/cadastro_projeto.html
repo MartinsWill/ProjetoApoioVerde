@@ -20,8 +20,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="inicial.html">
-                    <img src="../img/logo-img.png" width="50" height="50" class="d-inline-block align-center ">
-                    ApoioVerde
+                    <img src="../img/logo-img.png" width="50" height="50" class="d-inline-block align-center "> ApoioVerde
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,20 +55,20 @@
                 <input type="text" id="nome" placeholder="Ex: Árvore de laranja" maxlength="40" required> <span
                     id="nomeError" class="error"></span>
 
-                <label for="">Descrição:</label>
-                <br /> <textarea style="border:solid 2px rgb(8, 5, 0);" type="text" id="descricao1"
-                    placeholder="Ex: Uma pequena árvore de laranja que será plantada e cultivada na temporada de Agosto."
-                    rows="2" cols="47" required></textarea> <span id="descricaoError" class="error"></span>
+                    <label for="">Descrição:</label>
+                    <br /> <textarea style="border:solid 2px rgb(8, 5, 0);" type="text" id="descricao1"
+                        placeholder="Ex: Uma pequena árvore de laranja que será plantada e cultivada na temporada de Agosto."
+                        rows="2" cols="47" required></textarea> <span id="descricaoError" class="error"></span>
 
-                <label for="">Descrição:</label>
-                <br /> <textarea style="border:solid 2px rgb(8, 5, 0);" type="text" id="descricao2"
-                    placeholder="Ex: Uma pequena árvore de laranja que será plantada e cultivada na temporada de Agosto."
-                    rows="2" cols="47" required></textarea> <span id="descricaoError" class="error"></span>
+                    <label for="">Descrição:</label>
+                        <br /> <textarea style="border:solid 2px rgb(8, 5, 0);" type="text" id="descricao2"
+                            placeholder="Ex: Uma pequena árvore de laranja que será plantada e cultivada na temporada de Agosto."
+                            rows="2" cols="47" required></textarea> <span id="descricaoError" class="error"></span>
 
-                <label for="">Descrição:</label>
-                <br /> <textarea style="border:solid 2px rgb(8, 5, 0);" type="text" id="descricao3"
-                    placeholder="Ex: Uma pequena árvore de laranja que será plantada e cultivada na temporada de Agosto."
-                    rows="2" cols="47" required></textarea> <span id="descricaoError" class="error"></span>
+                            <label for="">Descrição:</label>
+                            <br /> <textarea style="border:solid 2px rgb(8, 5, 0);" type="text" id="descricao3"
+                                placeholder="Ex: Uma pequena árvore de laranja que será plantada e cultivada na temporada de Agosto."
+                                rows="2" cols="47" required></textarea> <span id="descricaoError" class="error"></span>
 
 
                 <label for="">Valor:</label><input type="number" id="valor" required maxlength="4"><span id="valorError"
@@ -105,6 +104,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+
     $(document).ready(function () {
         console.log("ready!");
         var formdata = new FormData();
@@ -126,6 +126,7 @@
             })
             .catch(error => console.log('error', error));
     });
+
 </script>
 
 </html>
