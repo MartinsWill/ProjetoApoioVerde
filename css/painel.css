@@ -1,0 +1,69 @@
+.list-menu button {
+    position: relative;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+    padding: 25px 7.5px;
+    border-radius: 0;
+    text-align: left;
+    min-height: 1px;
+    font-size: 15px;
+    color: #000;
+    border-top: 1px solid #4c4c4c;
+    border-left: 1px solid #4c4c4c;
+    border-right: 1px solid #4c4c4c;
+    border-bottom: none;
+    display: flex;
+
+}
+
+#border-bt {
+    border-bottom: 1px solid #4c4c4c;
+}
+
+.list-menu {
+    margin-top: 10vh;
+    border-bottom: none;
+}
+
+.list-menu button:hover {
+    border-left: 7px solid green;
+    transition: border-left-width .15s ease-in-out, color .15s ease-in-out;
+}
+
+.container-info {
+    margin-top: 10vh;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    border: 1px solid #ebebeb;
+    background: #fff;
+    padding: 30px 15px;
+    border-top: 1px solid #ebebeb;
+    border-radius: 0;
+    text-align: left;
+}
+
+.accordion-button:not(.collapsed) {
+    color: green;
+    background-color: #e7f1ff;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #fff;
+    background-color: green;
+}
+
+.accordion-button:focus {
+    z-index: 3;
+    border-color: green;
+    outline: 0;
+    box-shadow: 0 0 0 0.10rem rgba(41, 253, 13, 0.25);
+}
+
+.accordion-button::after {
+    color: green;
+}

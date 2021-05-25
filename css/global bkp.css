@@ -49,14 +49,3 @@ a:hover {
     font-size: 20px;
     text-align: justify;
 }
-#slider{
-    background-image: url('../img/bg1.png');
-    background-image: no-repeat;
-    background-size: cover;
-}
-#margin-text{
-    margin-top: 25vh;
-    text-align: justify;
-}
-
-

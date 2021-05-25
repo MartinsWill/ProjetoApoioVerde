@@ -12,7 +12,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css">
+<link rel="shortcut icon" href="../img/logo-img bkp.png"/>
     <title>ApoioVerde</title>
 </head>
 
@@ -22,7 +26,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="inicial.html">
-                    <img src="../img/logo-img.png" width="50" height="50" class="d-inline-block align-center ">
+                    <img src="../img/logo-img.png" width="100" height="60" class="d-inline-block align-center ">
                     ApoioVerde
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -54,7 +58,7 @@
 <div class="card p-5">
     <h2 id='titulo'></h2>
     
-    <table id="table_lista" class="display"></table>
+    <table id="table_lista" class="display nowrap dt-responsive col-12" style="justify-content: center; text-align:center;"></table>
     
 </div>
 
@@ -73,15 +77,23 @@
     <script src="../js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+    
 
     <script type="text/javascript" charset="utf8"
         src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+        
+        <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.js"></script>
+        
+        
 
 
     <script>
 
         $(document).ready(function () {
+        
+        //new $.fn.dataTable.Responsive( table );
 
             if (localStorage.getItem('id_usuario') == null) {
                 window.location.replace(`../frontend/inicial.html`);
@@ -126,7 +138,7 @@
                                         <tr>
                                             <td>${element.nome}</td>
                                             <td>${element.oque_receberei}</td>
-                                            <td>${element.valor}</td>
+                                            <td>R$${element.valor}</td>
                                             <td>${element.data_entrega}</td>
                                             <td>${element.data_modificacao}</td>
                                         </tr>`
@@ -146,22 +158,37 @@
                 let tabela = `
                 <thead>
                     <tr>
-                        <th>Nome comprador</th>
-                        <th>E-mail comprador</th>
+                         <th>Nome comprador</th>
                         <th>Nome Projeto</th>
                         <th>Valor Apoio</th>
                         <th>Data Entrega Projeto</th>
+                        <th>CPF comprador</th>
+                        <th>E-mail comprador</th>
+                        <th>Telefone comprador</th>
+                        <th>Logradouro comprador</th>
+                        <th>Número comprador</th>
+                        <th>Bairro comprador</th>
+                        <th>Cidade comprador</th>
                         <th>Data Pedido Projeto</th>
                     </tr>
                 </thead>
                 <tbody>`
 
-                let sql = `select u.nome as nomecliente, u.sobrenome as sobrenomecliente, u.email as emailcliente, p.nome as nomeprojeto, p.valor as valorprojeto, p.data_entrega, data_modificacao from tb_pedido
+                let sql = `select u.nome as nomecliente, u.sobrenome as sobrenomecliente, u.email as emailcliente, p.nome as nomeprojeto, p.valor as valorprojeto, p.data_entrega, data_modificacao, logradouro, numero, bairro, cidade, telefone, cpf 
+                        from tb_pedido
+                        
                         inner join tb_projeto as p
                         on id_projeto = p.id
+                        
                         inner join tb_usuario as u
                         on id_cliente = u.id
-                        where id_produtor = ${localStorage.getItem('id_usuario')};`
+                        
+                        inner join tb_info_usuario as ui
+                        on id_cliente = ui.id_usuario
+                        
+                        where id_produtor = ${localStorage.getItem('id_usuario')}
+                        order by data_modificacao desc
+                        ;`
 
                 jQuery.ajax({
                     type: "POST",
@@ -180,10 +207,16 @@
                             console.log(element.nomecliente)
                             tabela += `<tr>
                                     <td>${element.nomecliente} ${element.sobrenomecliente}</td>
-                                    <td>${element.emailcliente}</td>
                                     <td>${element.nomeprojeto}</td>
                                     <td>${element.valorprojeto}</td>
                                     <td>${element.data_entrega}</td>
+                                    <td>${element.cpf}</td>
+                                    <td>${element.emailcliente}</td>
+                                    <td>${element.telefone}</td>
+                                    <td>${element.logradouro}</td>
+                                    <td>${element.numero}</td>
+                                    <td>${element.bairro}</td>
+                                    <td>${element.cidade}</td>
                                     <td>${element.data_modificacao}</td>
                                 </tr>`
                         });
@@ -194,7 +227,9 @@
                     tabela += `</tbody>`
                     $('#table_lista').html(tabela)
 
-                    $('#table_lista').DataTable();
+                    $('#table_lista').DataTable( {
+                            responsive: true,
+                    } );
                 })
 
             }

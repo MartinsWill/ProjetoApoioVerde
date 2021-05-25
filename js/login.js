@@ -1,3 +1,17 @@
+$( document ).ready(function() {
+if(
+     localStorage.getItem("id_usuario") != null && 
+     localStorage.getItem("nome_usuario") != null && 
+     localStorage.getItem("sobrenome_usuario") != null && 
+     localStorage.getItem("email_usuario") != null && 
+     localStorage.getItem("tipo_usuario") != null
+     )
+     {
+             console.log(`LOGADO`)
+             window.location.replace(`../frontend/painel.html`);
+     }
+
+})
 
 function validaLogin() {
 
@@ -28,7 +42,7 @@ function validaLogin() {
                     console.log(resultado)
 
                     if (resultado.length > 0) {
-                        alert("Login Realizado com sucesso")
+                        //alert("Login Realizado com sucesso")
 
                         localStorage.setItem("id_usuario", resultado[0].ID);
                         localStorage.setItem("nome_usuario", resultado[0].NOME);
@@ -36,10 +50,21 @@ function validaLogin() {
                         localStorage.setItem("email_usuario", resultado[0].EMAIL);
                         localStorage.setItem("tipo_usuario", resultado[0].TIPO);
 
-                        if (resultado[0].TIPO == 'P')
-                                window.location.replace(`../frontend/cadastro_projeto.html`);
-                        else
-                                window.location.replace(`../frontend/inicial.html`);
+
+                        Swal.fire({
+                          icon: 'success',
+                          title: 'Bem vindo, '+resultado[0].NOME,
+                          showConfirmButton: false,
+                          timer: 3000
+                        })
+
+                        setTimeout(function(){ window.location.replace(`../frontend/painel.html`); }, 3000);
+                        
+                        
+                       // if (resultado[0].TIPO == 'P')
+                                //window.location.replace(`../frontend/painel.html`);
+                       // else
+                               // window.location.replace(`../frontend/painel.html`);
                     }
                     else
                         $("#loginInfo").html("* As informações de login informadas não constam em nossa base de dados");

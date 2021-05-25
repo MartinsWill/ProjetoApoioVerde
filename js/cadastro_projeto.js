@@ -77,9 +77,9 @@ function validaFormulario(imgHash) {
     // else{
 
     let sql = `INSERT INTO tb_projeto 
-    (NOME, OQUE_APOIAREI, OQUE_RECEBEREI, QUANDO_RECEBEREI, VALOR, META_FINAL, ESTADO, DATA_ENTREGA, IMAGEM, ID_PRODUTOR) 
+    (NOME, OQUE_APOIAREI, OQUE_RECEBEREI, VALOR, META_FINAL, ESTADO, DATA_ENTREGA, IMAGEM, ID_PRODUTOR) 
     VALUES 
-    ("${$("#nome").val()}","${$("#descricao1").val()}","${$("#descricao2").val()}","${$("#descricao3").val()}","${$("#valor").val()}","${$("#metaf").val()}", 1, "${$("#data").val()}", '${imgHash}', "${localStorage.getItem('id_usuario')}");`
+    ("${$("#nome").val()}","${$("#descricao1").val()}","${$("#descricao2").val()}","${$("#valor").val()}","${$("#metaf").val()}", 1, "${$("#data").val()}", '${imgHash}', "${localStorage.getItem('id_usuario')}");`
 
     $.ajax({
         type: "POST",

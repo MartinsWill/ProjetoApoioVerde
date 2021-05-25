@@ -1,9 +1,10 @@
 var id_projeto
+
 $(document).ready(function () {
     id_projeto = location.search.substring(1)
     // console.log(parametro)
 
-    sql = `SELECT PJ.NOME, PD.NOME AS NOME_PRODUTOR, PJ.IMAGEM, PJ.META_FINAL FROM tb_projeto AS PJ
+    sql = `SELECT PJ.NOME, PD.NOME AS NOME_PRODUTOR, PD.SOBRENOME AS SOBRENOME_PRODUTOR, PJ.IMAGEM, PJ.META_FINAL, PJ.OQUE_APOIAREI, PJ.OQUE_RECEBEREI, PJ.VALOR, PJ.DATA_ENTREGA FROM tb_projeto AS PJ
     INNER JOIN tb_usuario AS PD
     ON PJ.ID_PRODUTOR = PD.ID
     WHERE PJ.ID = '${id_projeto}'`
@@ -26,12 +27,20 @@ $(document).ready(function () {
 
                     //$('#imagem').append(`<img src="https://i.imgur.com/${imagens[0]}.jpg" class="img-fluid" alt="">`)
                     $('#imagem').append(
-                        `<div style="background-image: url('https://i.imgur.com/${imagens[0]}.jpg'); background-position: center; background-size: cover; width:735px; height:600px; border-radius:5px" class="img-fluid"> </div>`
+                        `<div style="background-image: url('https://i.imgur.com/${imagens[0]}.jpg'); background-position: center; background-size: cover; width:735px; height:400px; border-radius:5px" class="img-fluid"> </div>`
                     )
-                    $('#nomeProjeto').html(element.NOME)
-                    $('#nomeProdutor').html(element.NOME_PRODUTOR)
+                    $('.nomeProjeto').html(element.NOME)
+                    $('.nomeProdutor').html(element.NOME_PRODUTOR +' '+ element.SOBRENOME_PRODUTOR) 
 
-                    $('#valorMeta').html(`Meta R$${element.META_FINAL}`)
+                    $('.valorMeta').html(`R$ ${element.META_FINAL}`)
+                    
+                    $('#APOIAREI').html(element.OQUE_APOIAREI)
+                    $('#RECEBEREI').html(element.OQUE_RECEBEREI)
+                    
+                    $('.valor').html(element.VALOR)
+                    data_inicio = element.DATA_ENTREGA
+                    
+                    calendario();
 
 
                 });
@@ -153,16 +162,15 @@ validaFormulario = () => {
     return false
 }
 
-let data_inicio = '2021-09-31'
-let data_fim = '2021-10-07'
 
-document.addEventListener('DOMContentLoaded', function () {
+
+function calendario() {
     let calendarEl = document.getElementById('calendar');
 
     let calendar = new FullCalendar.Calendar(calendarEl, {
         locale: 'pt-br',
         themeSystem: 'bootstrap',
-        initialDate: data_inicio,
+        initialDate: moment(data_inicio).format('YYYY-MM-DD'),
         headerToolbar: {
             text: 'custom!',
             left: 'title',
@@ -171,17 +179,18 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         events: [{
             title: 'Previsão de Entrega',
-            start: data_inicio,
-            end: data_fim,
+            start: moment(data_inicio).format('YYYY-MM-DD'),
+            end: moment(moment(data_inicio).add(7, 'days')).format('YYYY-MM-DD')
         },
         {
-            start: data_inicio,
-            end: data_fim,
-            display: 'background',
-            color: 'green'
-        }
+             start:  moment(data_inicio).format('YYYY-MM-DD'),
+           end: moment(moment(data_inicio).add(7, 'days')).format('YYYY-MM-DD'),
+           display: 'background',
+            color: 'lightgreen'
+            }
         ]
     });
 
+
     calendar.render();
-});
+}

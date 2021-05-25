@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--CSS-->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css">
+    <link rel="shortcut icon" href="../img/logo-img bkp.png"/>
+
+    <title>Apoio Verde</title>
+</head>
+
+<body ondragstart="return false">
+
+    <!--header-->
+    <div id="header">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="inicial.html">
+                    <img src="../img/logo-img.png" width="100" height="60" class="d-inline-block align-center ">
+                    ApoioVerde
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../frontend/inicial.html#sobre">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../frontend/inicial.html#como-funciona">Como funciona?</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="../frontend/projetos.html">Projetos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contato">Contato</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../frontend/login.html">Login | Cadastrar</a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+    </nav>
+    </div>
+    <div class="container list-menu block2">
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button border-bt" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne">
+                        <i class="fas fa-user"></i>&nbsp; Perfil
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show p-5"
+                    aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <h4>CONFIGURAÇÕES GERAIS</h4><br>
+                        <h6 for="">Gerencie os detalhes da conta, incluindo seu
+                            nome, informações de contato e mais.</h6><br>
+                            
+                        <h4>INFORMAÇÕES DA CONTA</h4><br>
+                        <input type="text" id="nome_usuario" disabled placeholder="Nome do usuário">
+                        <input type="text" id="email_usuario" disabled placeholder="Email do usuário"><br>
+                        <h4>DETALHES PESSOAIS</h4><br>
+                        <h6 for="">Gerencie seu nome e informações de contato. Essas informações pessoais são privadas e
+                            não serão exibidos para outros usuários. </h6><br>
+                        <input type="text" id:"cpf_usuario" disabled placeholder="CPF">
+                        <input type="text" id:"telefone_usuario"disabled placeholder="Telefone"><br>
+
+                        <h4>ENDEREÇO </h4><br>
+                        <input type="text" id:"logradouro_usuario"disabled placeholder="Logradouro">
+                        <input type="text" id:"cep_usuario" disabled placeholder="CEP">
+                        <input type="text" id:"bairro_usuario" disabled placeholder="Bairro">
+                        <input type="text" id:"cidade_usuario" disabled placeholder="Cidade">
+                        <input type="text" id:"numero_usuario" disabled placeholder="Numero">
+                        <input type="text" id:"estado_usuario" disabled placeholder="Estado">
+
+                        <p><label>* Os dados pessoais poderão ser alterados no momento do apoio</label></p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item" id="lista">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                    <button class="accordion-button border-bt" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseTwo">
+                        <i class="fas fa-th-list"></i> &nbsp; <span class='titulo_lista'></span>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show p-5"
+                    aria-labelledby="panelsStayOpen-headingTwo">
+                    <div class="accordion-body">
+                            <h2 class='titulo_lista'></h2>
+                            <table id="table_lista" class="display nowrap dt-responsive" style="width:100%" style="justify-content: center; text-align:center;"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item" id="cadastro">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                    <button class="accordion-button border-bt show " type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseThree">
+                        <i class="fas fa-plus"></i> &nbsp; Cadastrar projeto
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show p-5"
+                    aria-labelledby="panelsStayOpen-headingThree">
+                    <div class="accordion-body">
+                        
+                        
+            <h1>Cadastrar Projeto</h1>
+            <form onsubmit="return uploadImagem(document.getElementById('file'))">
+                <label for="">Nome:</label>
+                <input type="text" id="nome" placeholder="Ex: Árvore de laranja" maxlength="40" required> <span
+                    id="nomeError" class="error"></span>
+
+                    <label for="">O que Apoiarei:</label>
+                    <br /> <textarea style="border:solid 2px rgb(8, 5, 0);" type="text" id="descricao1"
+                        placeholder="Ex: Uma pequena árvore de laranja que será plantada e cultivada na temporada de Agosto."
+                        rows="2" cols="47" required></textarea> <span id="descricaoError" class="error"></span>
+
+                    <label for="">O que Receberei: </label>
+                        <br /> <textarea style="border:solid 2px rgb(8, 5, 0);" type="text" id="descricao2"
+                            placeholder="Ex: 5 Kg de Laranja e um pote de Geleia"
+                            rows="2" cols="47" required></textarea> <span id="descricaoError" class="error"></span>
+
+
+                <label for="">Valor:</label><input type="number" id="valor" required maxlength="4"><span id="valorError"
+                    class="error"></span>
+                <label for="">Meta final:</label><input type="number" id="metaf" placeholder="Ex: R$4.000" required
+                    maxlength="8"> <span id="metafError" class="error"></span>
+                <label for="">Data limite:</label><input type="date" id="data" required> <span id="dataError"
+                    class="error"></span>
+                <input type="file" id="file" name="file[]" accept="image/png, image/jpeg" multiple> </input>
+                </br />
+                <br /><span id="spanImagem"></span>
+                <input id="btn-cadastrar" type="submit" class="text-center" value='Cadastrar'>
+                
+            </form>
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                    <button id="border-bt" type="button" onclick="localStorage.clear(); location.reload();" >
+                        <i class="fas fa-sign-out-alt"></i> &nbsp; Logout
+                    </button>
+                </h2>
+            </div>
+            
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/cadastro_projeto.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+
+
+<script>
+
+ $(document).ready(function () {
+        console.log("ready!");
+        var formdata = new FormData();
+        formdata.append("refresh_token", "076c1914bfd1dc72b49b1d070435928fe8acabc4");
+        formdata.append("client_id", "3f97679613f7d0f");
+        formdata.append("client_secret", "93f04efd1b88b50506a914c2656374bc46ee89eb");
+        formdata.append("grant_type", "refresh_token");
+
+        var requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        fetch("https://api.imgur.com/oauth2/token", requestOptions)
+            .then(response => response.json())
+            .then(response => {
+                token_acesso = response.access_token
+            })
+            .catch(error => console.log('error', error));
+    });
+
+
+
+
+ $(document).ready(function () {
+        
+        
+        
+        
+        
+        sql = `SELECT * FROM tb_usuario
+            LEFT JOIN tb_info_usuario
+            ON tb_info_usuario.ID_USUARIO = tb_usuario.ID
+            WHERE tb_usuario.id = ${localStorage.getItem('id_usuario')};`
+
+            $.ajax({
+                type: "POST",
+                url: '../backend/crud.class.php',
+                dataType: 'json',
+                data: {
+                    functionname: 'execute_query',
+                    arguments: sql
+                },
+        
+                success: function (data, textstatus) {
+                    if (!('error' in data)) {
+                        resultado = JSON.parse(data.result);
+        
+                        resultado.forEach(element => {
+        
+                            $('#nome_usuario').val(element.NOME)
+                            $('#email_usuario').val(element.EMAIL)
+                            $('#cpf_usuario').val(element.CPF)
+                            $('#telefone_usuario').val(element.TELEFONE)
+                            $('#logradouro_usuario').val(element.LOGRADOURO)
+                            $('#cep_usuario').val(element.CEP)
+                            $('#bairro_usuario').val(element.BAIRRO)
+                            $('#cidade_usuario').val(element.CIDADE)
+                            $('#numero_usuario').val(element.NUMERO)
+                            $('#estado_usuario').val(element.ESTADO)
+        
+        
+        
+                        });
+        
+        
+                    } else {
+                        console.log(data.error);
+                    }
+                }
+            })
+        
+        
+        
+        
+        
+        
+        
+        //new $.fn.dataTable.Responsive( table );
+
+            if (localStorage.getItem('id_usuario') == null) {
+                window.location.replace(`../frontend/inicial.html`);
+            }
+
+            else if (localStorage.getItem('tipo_usuario') == 'C') {
+
+  
+                  document.getElementById("cadastro").remove()
+                $('.titulo_lista').html(`Apoios do Cliente`)
+                let tabela = `
+                <thead>
+                    <tr>
+                        <th>Nome Projeto</th>
+                        <th>Oque receberei?</th>
+                        <th>Valor Apoio</th>
+                        <th>Data Entrega</th>
+                        <th>Data Pedido</th>
+                    </tr>
+                </thead>
+                <tbody>`
+
+                let sql = `select p.nome, oque_receberei, valor, data_entrega, data_modificacao from tb_pedido
+                        inner join tb_usuario as u
+                        on id_cliente = u.id
+                        
+                        inner join tb_projeto as p
+                        on id_projeto = p.id
+                        where id_cliente = ${localStorage.getItem('id_usuario')};`
+
+                $.ajax({
+                    type: "POST",
+                    url: '../backend/crud.class.php',
+                    dataType: 'json',
+                    data: { functionname: 'execute_query', arguments: sql }
+
+                }).done(function (obj) {
+                    resultado = JSON.parse(obj.result)
+
+                    if (resultado.length > 0) {
+
+                        resultado.forEach(element => {
+                            tabela += `
+                                        <tr>
+                                            <td>${element.nome}</td>
+                                            <td>${element.oque_receberei}</td>
+                                            <td>R$${element.valor}</td>
+                                            <td>${element.data_entrega}</td>
+                                            <td>${element.data_modificacao}</td>
+                                        </tr>`
+                        });
+                    }
+                    tabela += `</tbody>`
+                    console.log(tabela)
+                    $('#table_lista').html(tabela)
+
+                    $('#table_lista').DataTable( {
+                            responsive: true
+                    } );
+                    $('.accordion-button').click()
+                })
+
+
+            }
+            else if (localStorage.getItem('tipo_usuario') == 'P') {
+                $('.titulo_lista').html(`Projetos apoiados do produtor`)
+                let tabela = `
+                <thead>
+                    <tr>
+                        <th>Nome comprador</th>
+                        <th>Nome Projeto</th>
+                        <th>Valor Apoio</th>
+                        <th>Data Entrega Projeto</th>
+                        <th>CPF comprador</th>
+                        <th>E-mail comprador</th>
+                        <th>Telefone comprador</th>
+                        <th>Logradouro comprador</th>
+                        <th>Número comprador</th>
+                        <th>Bairro comprador</th>
+                        <th>Cidade comprador</th>
+                        <th>Data Pedido Projeto</th>
+                    </tr>
+                </thead>
+                <tbody>`
+
+                let sql = `select u.nome as nomecliente, u.sobrenome as sobrenomecliente, u.email as emailcliente, p.nome as nomeprojeto, p.valor as valorprojeto, p.data_entrega, data_modificacao, logradouro, numero, bairro, cidade, telefone, cpf 
+                        from tb_pedido
+                        
+                        inner join tb_projeto as p
+                        on id_projeto = p.id
+                        
+                        inner join tb_usuario as u
+                        on id_cliente = u.id
+                        
+                        inner join tb_info_usuario as ui
+                        on id_cliente = ui.id_usuario
+                        
+                        where id_produtor = ${localStorage.getItem('id_usuario')}
+                        order by data_modificacao desc
+                        ;`
+
+                jQuery.ajax({
+                    type: "POST",
+                    url: '../backend/crud.class.php',
+                    dataType: 'json',
+                    data: { functionname: 'execute_query', arguments: sql },
+
+                }).done(function (obj) {
+
+                    resultado = JSON.parse(obj.result)
+                    if (resultado.length > 0) {
+                        resultado.forEach(element => {
+                            tabela += `<tr>
+                                    <td>${element.nomecliente} ${element.sobrenomecliente}</td>
+                                    <td>${element.nomeprojeto}</td>
+                                    <td>${element.valorprojeto}</td>
+                                    <td>${element.data_entrega}</td>
+                                    <td>${element.cpf}</td>
+                                    <td>${element.emailcliente}</td>                                  
+                                    <td>${element.telefone}</td>
+                                    <td>${element.logradouro}</td>
+                                    <td>${element.numero}</td>
+                                    <td>${element.bairro}</td>
+                                    <td>${element.cidade}</td>
+                                    <td>${element.data_modificacao}</td>
+                                </tr>`
+                        });
+
+                    }
+
+
+                    tabela += `</tbody>`
+                    $('#table_lista').html(tabela)
+
+                    $('#table_lista').DataTable( {
+                            responsive: true
+                    } );
+                    $('.accordion-button').click()
+                })
+
+            }
+        
+        })
+
+    </script>
+</body>
+
+</html>

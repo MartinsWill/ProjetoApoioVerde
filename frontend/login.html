@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-
+<link rel="shortcut icon" href="../img/logo-img bkp.png"/>
     <title>ApoioVerde</title>
 </head>
 
@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="inicial.html">
-                    <img src="../img/logo-img.png" width="50" height="50" class="d-inline-block align-center "> ApoioVerde
+                    <img src="../img/logo-img.png" width="100" height="60" class="d-inline-block align-center "> ApoioVerde
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +57,7 @@
                 <label for="email">E-mail</label>
                 <input type="email" name="email" id="email" placeholder="Digite seu e-mail" autocomplete="off" required>
                 <label for="senha">Senha</label>
-                <input type="password" nome="password" id="senha" placeholder="Digite sua senha" autocomplete="off" required>
+                <input type="password" nome="password" id="senha" placeholder="Digite sua senha" autocomplete="off" maxlength="8" required>
                 <span id="loginInfo" class="error" style="color:red;"></span>
                 <input type="submit" value="Login">
             </form>
@@ -86,4 +86,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script src="../js/login.js"></script>
+    
+        <script src="../plugins/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="../plugins/sweetalert2/dist/sweetalert2.min.css">
 </body>
